@@ -26,20 +26,31 @@ async function fetchWeatherData(city) {
     // You can add more weather data fields here
   }
   
-  // Function to handle the "Get Weather" button click
-  function getWeather() {
-    const cityInput = document.getElementById('cityInput');
-    const city = cityInput.value.trim();
-  
-    if (city) {
-      fetchWeatherData(city)
-        .then(updateWeatherInfo)
-        .catch(() => {
-          // Handle the error (e.g., show an error message to the user)
-        });
+    // Function to handle the "Get Weather" button click
+    function getWeather() {
+      const cityInput = document.getElementById('cityInput');
+      const city = cityInput.value.trim();
+    
+      if (city) {
+        fetchWeatherData(city)
+          .then(updateWeatherInfo)
+          .catch((error) => {
+            // Handle the error by showing an error message to the user
+            console.error('Error fetching weather data:', error);
+            const errorMessage = 'An error occurred while fetching weather data. Please try again later.';
+            // You can customize the error message or take other actions to handle the error.
+            // For example, you can display the error message on the UI to inform the user.
+            displayErrorMessage(errorMessage);
+          });
+      }
     }
-  }
-  
+    
+    // Function to display an error message to the user
+    function displayErrorMessage(message) {
+      const errorElement = document.getElementById('error');
+      errorElement.textContent = message;
+      // You can also style the error message or update the UI as needed.
+    }
   // Add an event listener to the "Get Weather" button
   const getWeatherBtn = document.getElementById('getWeatherBtn');
   getWeatherBtn.addEventListener('click', getWeather);
