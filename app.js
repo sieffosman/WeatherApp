@@ -22,8 +22,6 @@ async function fetchWeatherData(city) {
     cityNameElement.textContent = data.name || 'City Name';
     temperatureElement.textContent = data.main?.temp ? `${data.main.temp} °C` : '-- °C';
     humidityElement.textContent = data.main?.humidity ? `${data.main.humidity} %` : '-- %';
-  
-    // You can add more weather data fields here
   }
   
     // Function to handle the "Get Weather" button click
@@ -49,7 +47,7 @@ async function fetchWeatherData(city) {
     function displayErrorMessage(message) {
       const errorElement = document.getElementById('error');
       errorElement.textContent = message;
-      // You can also style the error message or update the UI as needed.
+      // Style the error message or update the UI as needed.
     }
   // Add an event listener to the "Get Weather" button
   const getWeatherBtn = document.getElementById('getWeatherBtn');
